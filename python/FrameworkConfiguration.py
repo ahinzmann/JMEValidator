@@ -267,7 +267,7 @@ def createProcess(isMC, globalTag, readJECFromDB=False, jec_database=None, jec_d
             postfix = '%sPF%s' % (algo, pu_method)
 
             # FIXME: PU Jet id is not working with puppi jets or SK jets
-            if params['pu_jet_id'] and pu_method != 'Puppi' and pu_method != 'SK':
+            if params['pu_jet_id'] and pu_method != 'SK':
 
                 # PU jet Id
                 loadWithPostfix(process, 'RecoJets.JetProducers.pileupjetidproducer_cfi', postfix)
@@ -569,7 +569,7 @@ def createProcess(isMC, globalTag, readJECFromDB=False, jec_database=None, jec_d
 
     # HLTs
     process.hlt = cms.EDAnalyzer('HLTAnalyzer',
-            src = cms.InputTag('TriggerResults', '', 'HLT'),
+            src = cms.InputTag('TriggerResults', '', 'HLT2'),
             prescales = cms.InputTag('patTrigger'),
             objects = cms.InputTag("selectedPatTrigger"),
             )
